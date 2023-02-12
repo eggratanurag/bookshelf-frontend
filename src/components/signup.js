@@ -79,7 +79,7 @@ export default function Signup() {
           // })
           setLoading(false);
           Navigate('/')
-          window.location.reload(); 
+          // window.location.reload(); 
         } catch (error) {
           e.preventDefault();
          setLoading(false);
