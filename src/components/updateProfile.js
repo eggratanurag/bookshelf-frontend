@@ -42,7 +42,7 @@ export default function UpdateProfile() {
       });
 
       Navigate("/profile/" + user._id);
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
        console.log(error)
     }
