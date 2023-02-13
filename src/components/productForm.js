@@ -152,7 +152,7 @@ const checkValidation = async (e) => {
   
       <FormControl className="form-group">
      <FormLabel className='errorLabels'>upload the image</FormLabel>
-      <Input p={1.5} onChange={e=> imageUpload(e.target.files[0])} capture="environment" accept="image/*" type="file" placeholder="book image" />
+      <Input p={1.5} onChange={e=> imageUpload(e.target.files[0])}  accept="image/*" type="file" placeholder="book image" />
       </FormControl>
   
        <Button  

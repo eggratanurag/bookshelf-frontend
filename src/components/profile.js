@@ -189,8 +189,8 @@ export default function Profile({products, resultAvailable, loading, logout, mod
 
                             <MDBRow>
                               {products.map((product) => (
-                                <MDBCol key={product._id} className="mb-2">
-                                  <div >
+                                <MDBCol className="mb-2">
+                                  <div key={product._id}>
                                   {mode==="user"? 
                                   <Card showMode={"showMode"} props={product} />
                                   :

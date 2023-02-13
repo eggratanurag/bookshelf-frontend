@@ -10,19 +10,19 @@ import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/react";
 
 
-export default function Signup({ collectData, loading, btnText, checkData,mode,updateData,prePicture }) {
+export default function Signup({ collectData, loading, btnText, checkData,mode,updateData }) {
   const [show, setShow] = useState(false);
   const [picLoading, setPicLoading] = useState(false);
   const Toast = useToast();
   const handleClick = () => setShow(!show);
   const {user, setUser} = UserState();
-  const [pic, setPic] = useState("");
+  const [pic, setPic] = useState(user.pic);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [state, setState] = useState("");
-  const [address, setAddress] = useState("");
-  const [mob, setMob] = useState("");
+  const [state, setState] = useState(user.state);
+  const [address, setAddress] = useState(user.address);
+  const [mob, setMob] = useState(user.mob);
   const Navigate = useNavigate();
 
   function imageUpload (image) {
@@ -83,13 +83,13 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
 
   return (
     <div className="loginPageDiv">
+          
       <div className="mainDivForLogin">
         <div className="divForLoginImage">
-          {mode==="update" &&  <img src={pic==='' ? prePicture: pic} alt="" />}
+          {mode==="update" &&  <img src={pic} alt="" />}
           {mode!=="update" && <img src={womanLogginIn} alt="" />}
         </div>
         <div className="divForLoginForm">
-       
             {(btnText === "Sign Up") && (
               <FormControl isRequired>
                 <FormLabel>Name</FormLabel>
@@ -106,6 +106,7 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
             
             {mode==="update" && 
             <>
+            
               <FormControl isRequired>
               <FormLabel>Picture</FormLabel>
               <Input
@@ -114,7 +115,6 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
                 type="file"
                 placeholder="select a profile picture"
                 className="inputOutline"
-                capture="user"
                 accept="image/*"
                 onChange={(e) => imageUpload(e.target.files[0])}
               />
@@ -159,6 +159,7 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
               className="nButton"
               width="100%"
               style={{ marginTop: 15 }}
+              type="submit"
               onClick={(e) => updateData(pic, state, address, mob, e)}
               isLoading={picLoading}
             >
@@ -203,6 +204,7 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
               className="nButton"
               width="100%"
               style={{ marginTop: 15 }}
+              type="submit"
               onClick={(e) => btnText === "Sign Up" ? collectData(name, email, password, mob, state, address, e): checkData(email, password, e)}
               isLoading={loading}
             >
@@ -217,6 +219,7 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
          
         </div>
       </div>
+      
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate} from 'react-router-dom';
 import "./login.css"
-
+import { UserState } from '../context/userProvider';
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios';
 
@@ -9,8 +9,8 @@ import SignUpForm from './signUpForm.js';
 
 export default function Login() {
 
+  const{user, setUser} = UserState()
   const toast = useToast(); 
- 
     const [loading, setLoading] = useState(false);
     const Navigate = useNavigate();
    
@@ -72,6 +72,7 @@ export default function Login() {
           localStorage.setItem("userInfo", JSON.stringify(data));
           Navigate('/')
           window.location.reload(); 
+      
           setLoading(false);
         } catch (error) {
        

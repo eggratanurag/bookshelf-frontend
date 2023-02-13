@@ -9,20 +9,24 @@ import { UserState } from "../context/userProvider";
 export default function Header() {
   const Navigate = useNavigate();
   const { user, setUser } = UserState();
-  
-    const primaryNav = document.getElementById('primary-navigation')
-    const navToggle = document.getElementsByClassName('mobile-nav-toggle')[0]
+  const primaryNav = React.useRef();
+  const navToggle = React.useRef();
+
+console.log(user)
+
+ 
+
     function faltu () {
+    
+      const visibility = primaryNav.current.getAttribute('data-visible')
    
-      const visibility = primaryNav.getAttribute('data-visible');
-     
        if(visibility === "false") {
-          navToggle.setAttribute('aria-expanded', true)
-          primaryNav.setAttribute('data-visible',true)
+          navToggle.current.setAttribute('aria-expanded', true)
+          primaryNav.current.setAttribute('data-visible',true)
 
        }else {
-         primaryNav.setAttribute('data-visible', false)
-         navToggle.setAttribute('aria-expanded', false)
+         primaryNav.current.setAttribute('data-visible', false)
+         navToggle.current.setAttribute('aria-expanded', false)
        }
 
       
@@ -40,13 +44,14 @@ export default function Header() {
         className="mobile-nav-toggle navlinks"
         aria-controls="primary-navigation"
         aria-expanded="false"
+        ref={navToggle}
 
       >
      
           <MenuIcon style={{fontSize: "3rem"}} />
        
       </button>
-          <ul data-visible="false" id="primary-navigation" className="primary-navigation">
+          <ul data-visible="false" id="primary-navigation" ref={primaryNav} className="primary-navigation">
             <li>
               <span aria-hidden="true">
                 <NavLink onClick={() => faltu()} className="navlinks" to={"/"}>
@@ -88,7 +93,7 @@ export default function Header() {
           
           {user ? (
             <NavLink to={"/profile/" + user._id} className="navlinks">
-              profile
+              <img style={{width:"40px", borderRadius:"50%",border:"2px solid #ff735d"}} src={user.pic} alt=""/>
             </NavLink>
           ) : (
             <NavLink  className="navlinks" to={"/user/login"}>

@@ -4,9 +4,10 @@ import "./login.css"
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios';
 import SignUpForm from "./signUpForm.js"
-
+import { UserState } from '../context/userProvider';
 export default function Signup() {
   const [show, setShow] = useState(false);
+  const {user, setUser} = UserState()
   const handleClick = () => setShow(!show);
   const toast = useToast();
   const Navigate = useNavigate();
@@ -22,8 +23,8 @@ export default function Signup() {
     const collectData = async (name,email,password,mob, state, address,e) => {
       setLoading(true);
       if (!name || !email || !password ) {
-    
-        console.log("no data typed")
+   
+        // console.log("no data typed")
         toast({
           title: "fill all the fields",
           status: "warning",
@@ -77,11 +78,12 @@ export default function Signup() {
           //    expires: new Date(2592000),
           //    HttpOnly:true
           // })
-          setLoading(false);
           Navigate('/')
-          // window.location.reload(); 
+     
+          window.location.reload(); 
+          setLoading(false);
         } catch (error) {
-          e.preventDefault();
+         
          setLoading(false);
           // console.log(error)
           toast({

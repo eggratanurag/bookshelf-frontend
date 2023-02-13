@@ -32,7 +32,7 @@ export default function UpdateProfile() {
         { pic, state, address, mob},
         config
       );
-      console.log(data);
+      // console.log(data);
       Toast({
         title: "updated profile",
         status: "success",
@@ -41,7 +41,7 @@ export default function UpdateProfile() {
         position: "bottom",
       });
 
-      Navigate("/profile/" + user._id);
+      Navigate("/");
       window.location.reload();
     } catch (error) {
        console.log(error)
