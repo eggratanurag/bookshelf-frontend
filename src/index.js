@@ -8,9 +8,9 @@ import UserProvider from "./context/userProvider";
 import {WishlistProvider,OrdersProvider} from "./context/productProvider";
 
 const PORT = process.env.PORT || 5000;
-axios.defaults.baseURL = `http://localhost:${PORT}/`;
+// axios.defaults.baseURL = `http://localhost:${PORT}/`;
 
-// axios.defaults.baseURL = `https://bookshelf-backend-jkv8.onrender.com/`;
+axios.defaults.baseURL = `https://bookshelf-backend-jkv8.onrender.com/`;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
