@@ -12,7 +12,7 @@ export default function Header() {
   const primaryNav = React.useRef();
   const navToggle = React.useRef();
 
-console.log(user)
+// user && console.log(user)
 
  
 
@@ -93,7 +93,7 @@ console.log(user)
           
           {user ? (
             <NavLink to={"/profile/" + user._id} className="navlinks">
-              <img style={{width:"35px", height:"35px", borderRadius:"50%",border:"2px solid #ff735d"}} src={user.pic} alt=""/>
+              <img style={{width:"35px", height:"35px", borderRadius:"50%",border:"2px solid #ff735d"}} src={user && user.pic} alt=""/>
             </NavLink>
           ) : (
             <NavLink  className="navlinks" to={"/user/login"}>

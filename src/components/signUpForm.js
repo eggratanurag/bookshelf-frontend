@@ -16,13 +16,13 @@ export default function Signup({ collectData, loading, btnText, checkData,mode,u
   const Toast = useToast();
   const handleClick = () => setShow(!show);
   const {user, setUser} = UserState();
-  const [pic, setPic] = useState(user.pic);
+  const [pic, setPic] = useState(user && user.pic);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [state, setState] = useState(user.state);
-  const [address, setAddress] = useState(user.address);
-  const [mob, setMob] = useState(user.mob);
+  const [state, setState] = useState(user &&  user.state);
+  const [address, setAddress] = useState(user &&  user.address);
+  const [mob, setMob] = useState(user &&  user.mob);
   const Navigate = useNavigate();
 
   function imageUpload (image) {
