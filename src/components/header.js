@@ -93,7 +93,7 @@ console.log(user)
           
           {user ? (
             <NavLink to={"/profile/" + user._id} className="navlinks">
-              <img style={{width:"40px", borderRadius:"50%",border:"2px solid #ff735d"}} src={user.pic} alt=""/>
+              <img style={{width:"35px", height:"35px", borderRadius:"50%",border:"2px solid #ff735d"}} src={user.pic} alt=""/>
             </NavLink>
           ) : (
             <NavLink  className="navlinks" to={"/user/login"}>
